@@ -1,3 +1,5 @@
+#pragma once
+
 #include <eigen3/Eigen/Dense>
 
 
@@ -33,9 +35,14 @@ bool permute(Eigen::MatrixXd& L, Eigen::VectorXd& D, Eigen::MatrixXd& Z);
 //   current_z: The integer vector we are currently building
 //   y: The accumulated errors (z - z_cond) from previous levels
 //   current_chi_sq: The budget consumed so far
+//   iter_count: current iteration of the search
+//   max_iter: maximum number of iterations allowed
 // outputs (Passed by reference):
-//   best_chi_sq: The smallest budget achieved (The "Shrinking Sphere" radius)
+//   best_chi_sq: The smallest budget achieved
 //   best_z: The absolute best integer vector found
+//   second_best_chi_sq: The 2nd smallest budget achieved
+//   second_best_z: The 2nd best integer vector found
 void search(int i, int n, const Eigen::MatrixXd& L, const Eigen::VectorXd& D, const Eigen::VectorXd& z_hat,
-            Eigen::VectorXd& current_z, Eigen::VectorXd& y, double current_chi_sq, double& best_chi_sq, 
-            Eigen::VectorXd& best_z);
+            Eigen::VectorXd& current_z, Eigen::VectorXd& y, int& iter_count, int max_iter, 
+            double current_chi_sq, double& best_chi_sq, Eigen::VectorXd& best_z, 
+            double& second_best_chi_sq, Eigen::VectorXd& second_best_z);

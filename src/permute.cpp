@@ -1,5 +1,3 @@
-#include <iostream>
-#include <cmath>
 #include <utility>
 
 #include "../include/lambda.hpp"
@@ -16,7 +14,7 @@ bool permute(Eigen::MatrixXd& L, Eigen::VectorXd& D, Eigen::MatrixXd& Z) {
         double l_old = L(i, i -1);
 
         // Lovasz Condition - calculate new upper variance
-        double delta = d2 + std::pow(l_old, 2) * d1;
+        double delta = d2 + (l_old * l_old) * d1;
 
         // check if new upper variance is smaller than old upper variance
         if (d1 > delta) {
@@ -43,7 +41,6 @@ bool permute(Eigen::MatrixXd& L, Eigen::VectorXd& D, Eigen::MatrixXd& Z) {
             }
 
             // return imediately if there was a swap
-            std::cout << "swap occured!" << '\n';
             return true;
         }
     }

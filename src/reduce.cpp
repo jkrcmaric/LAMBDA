@@ -1,7 +1,6 @@
-#include <iostream>
 #include <cmath>
 
-#include "../include/lambda.hpp"
+#include "lambda.hpp"
 
 
 void reduce(Eigen::MatrixXd& L, Eigen::MatrixXd& Z) {
@@ -18,9 +17,7 @@ void reduce(Eigen::MatrixXd& L, Eigen::MatrixXd& Z) {
             if (mu != 0.0) {
 
                 // update L
-                for (size_t k = 0; k <= j; ++k) {
-                    L(i, k) -= mu * L(j, k);
-                }
+                L.row(i).head(j + 1) -= mu * L.row(j).head(j + 1);
 
                 // update Z
                 Z.col(i) -= mu * Z.col(j);

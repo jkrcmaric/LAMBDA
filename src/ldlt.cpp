@@ -1,6 +1,4 @@
-#include <iostream>
-
-#include "../include/lambda.hpp"
+#include "lambda.hpp"
 
 
 void ldlt(const Eigen::MatrixXd& Q, Eigen::MatrixXd& L, Eigen::VectorXd& D) {
@@ -19,6 +17,7 @@ void ldlt(const Eigen::MatrixXd& Q, Eigen::MatrixXd& L, Eigen::VectorXd& D) {
             D(j) -= L(j, k) * L(j, k) * D(k);
         }
 
+        // Calculate L(i,j)
         for (size_t i = j+1; i < n; ++i) {
             if (D(j)  == 0.0) {
                 L(i, j) = 0.0;
