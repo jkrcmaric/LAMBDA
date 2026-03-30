@@ -1,2 +1,2 @@
 # LAMBDA
-C++ LAMBDA Algorithm for Fixing Integer Ambiguity
+C++ LAMBDA Algorithm for Fixing Integer Ambiguities
